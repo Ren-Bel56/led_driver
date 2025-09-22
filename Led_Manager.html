@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8" />
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+        <title>Led driver</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="style.css" rel= "stylesheet"> 
+    </head>
+        <header class="header">
+    
+            <div class="topnav">
+                <h1>NANO Led driver <br /> </h1>
+            <nav class="navig">
+                
+                    <a class="retpag" href="Led_Manager.html">Accueil </a>
+                    <a class="pg2" href="Page2.html">Page 2 </a>
+                    <a class="toardw" href="https://www.arduino.cc">Arduino</a>
+            </nav>
+            </div>
+                    <div class="horloge" id="horloge" onload="heureactuelle()">
+
+                       <script>
+                        function heureactuelle(){
+                            var date = new Date();
+                            var heure = date.getHours();
+                            var minute = date.getMinutes();
+                            var seconde = date.getSeconds();
+                            if (heure < 10){heure = "0" + heure;}
+                            if (minute < 10){minute = "0" + minute;}
+                            if (seconde < 10){seconde = "0" + seconde;}
+                            var heurecomplete = heure + ":" + minute + ":" + seconde;
+                            document.getElementById('horloge').innerHTML = heurecomplete;
+                            setTimeout(heureactuelle,1000);
+                        }
+
+                    </script>
+                    <body onload="heureactuelle()"></body>
+                    </div>
+        </header>          
+                    
+                        
+
+
+            
+    <body class="bodyled">
+        
+        <div class="banniere">
+            <h3>Led Driver</h3>
+        </div>
+        <h1 class="lobster-two-bold-italic prstit"> Pilotage d'une led</h1>
+            <!-- ...existing code... -->
+        <div class="inschamp">
+                <label for="valeurLed">Valeur PWM :</label>
+                <input type="number" id="valeurLed" value="" min="0" max="100">
+                <button onclick="envoyerValeur()">Envoyer</button>
+            </div>
+        <script>
+        function envoyerValeur() {
+            const valeur = document.getElementById('valeurLed').value;
+            const pwm = Number(valeur);
+            if (isNaN(pwm) || pwm < 0 || pwm > 100) {
+                alert('Veuillez entrer une valeur numérique entre 0 et 100 pour le PWM.');
+                return;
+            }
+            fetch('/envoyer', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ pwm: pwm })
+            })
+            .then(response => response.text())
+            .then(data => alert('Valeur envoyée : ' + data));
+        }
+        </script>
+        <!-- ...existing code... -->
+        <p> On pilote une <span class="clastxt_1"> led</span> à l'aide des propriétés d'une sortie pwm </p>
+        <p>sur un arduino nano </p>
+        
+        <p>Vue du nano
+            
+
+        </p>
+        <p> 
+            <a href="#anch1">Documentation</a>
+            <img src="nano.jpg" alt="vue du nano" />
+            
+        </p>
+        <h2 id="anch1" class="colh2"> Documentation </h2> 
+        
+            
+        
+        <a class="coldoc" href="https://docs.arduino.cc/resources/datasheets/A000005-datasheet.pdf">Doc  </a><br>
+        <a href="Page2.html">page 2</a>
+    </body>
+</html>
