@@ -1,15 +1,12 @@
 {
     "version": "0.2.0",
     "configurations": [
-       
         {
             "command": "npm start",
             "name": "Run npm start",
             "request": "launch",
             "type": "node-terminal"
         },
-
-
         {
             "type": "firefox",
             "request": "launch",
@@ -50,6 +47,12 @@
             "request": "launch",
             "reAttach": true,
             "addonPath": "${workspaceFolder}"
+        },
+        {
+            "type": "node-terminal",
+            "name": "JavaScript Debug Terminal",
+            "request": "launch",
+            "cwd": "${workspaceFolder}"
         },
         {
             "type": "node-terminal",
