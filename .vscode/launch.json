@@ -3,6 +3,11 @@
     "configurations": [
         {
             "type": "firefox",
+            "request": "attach",
+            "name": "Attach"
+        },
+        {
+            "type": "firefox",
             "request": "launch",
             "reAttach": true,
             "name": "Launch index.html",

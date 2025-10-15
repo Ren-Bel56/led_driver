@@ -1,0 +1,13 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "Live Preview",
+			"workspacePath": "/Users/reneguichard/Documents/GitHub/led_driver",
+			"problemMatcher": [
+				"$eslint-compact"
+			],
+			"label": "Live Preview: Run Server"
+		}
+	]
+}
