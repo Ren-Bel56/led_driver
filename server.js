@@ -5,9 +5,9 @@ const bodyParser = require('body-parser');
 const app = express();
 const port = 3000;
 
-// Remplace '/dev/ttyUSB0' par le port série de ton Arduino (ex: '/dev/ttyACM0' ou '/dev/ttyUSB0')
+// Remplace '/dev/ttyUSB0' par le port série de ton Arduino (ex: '/dev/tty.usbserial-2410' ou '/dev/ttyUSB0')
 const arduino = new SerialPort.SerialPort({
-    path: '/dev/ttyUSB0',
+    path: '/dev/tty.usbserial-2410',
     baudRate: 9600
 });
 
